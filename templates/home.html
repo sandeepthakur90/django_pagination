@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<title>home page</title>
+<meta name="description" content="Our first page">
+<meta name="keywords" content="html tutorial template">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1>home page </h1>
+    {% for p in all_post %}
+     <h2>{{p.title}}</h2>
+     <p>{{p.desc}}</p>
+     <small> {{p.publish_date}}</small>
+    {% endfor %} 
+    {% comment %} <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a href="?page=1">&laquo; first</a>
+          </li>
+          <li class="page-item">
+            <a href="?page={{ all_post.previous_page_number }}">previous</a>
+          </li>
+        {% endif %}
+
+          {% for n in totalsizelist %}
+            <li class="page-item">
+                <a class="page-link" href="/?page={{n}}">{{n}}</a>
+            </li>
+          {% endfor %}
+          
+          {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{ all_post.next_page_number }}">next</a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ all_post.paginator.num_pages }}">last &raquo;</a>
+            </li>
+          {% endif %} 
+        </ul>
+       
+      </nav>  {% endcomment %}
+
+      <div class="pagination">
+        <span class="step-links">
+            {% if all_post.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ all_post.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ all_post.number }} of {{ all_post.paginator.num_pages }}.
+            </span>
+    
+            {% if all_post.has_next %}
+                <a href="?page={{ all_post.next_page_number }}">next</a>
+                <a href="?page={{ all_post.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
